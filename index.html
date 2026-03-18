@@ -54,30 +54,29 @@
             overflow-x: hidden;
         }
 
-        /* DEMO MODE WATERMARK */
+        /* DEMO MODE WATERMARK - IMPROVED VISIBILITY */
         .demo-watermark {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-30deg);
-            font-size: 8vw;
+            font-size: 6vw;
             font-weight: 900;
-            color: rgba(255, 68, 68, 0.1);
+            color: rgba(255, 68, 68, 0.3);
             white-space: nowrap;
             pointer-events: none;
             z-index: 9999;
             text-transform: uppercase;
-            letter-spacing: 20px;
-            border: 3px solid rgba(255, 68, 68, 0.15);
-            padding: 15px 30px;
-            border-radius: 15px;
-            user-select: none;
+            letter-spacing: 10px;
+            text-shadow:
+                0 0 5px rgba(255, 68, 68, 0.5),
+                0 0 10px rgba(255, 68, 68, 0.3);
             animation: watermarkPulse 4s infinite;
         }
         @keyframes watermarkPulse {
-            0% { opacity: 0.08; }
-            50% { opacity: 0.12; }
-            100% { opacity: 0.08; }
+            0% { opacity: 0.2; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.2; }
         }
 
         /* Quantum Foam Background */
@@ -134,9 +133,9 @@
             transform: translateY(-3px);
         }
 
-        /* Inuktitut Syllabic Styling */
+        /* Inuktitut Syllabic Styling - FIXED RENDERING */
         .syllabic {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito', 'Segoe UI', 'Arial Unicode MS', sans-serif;
             color: #00ffaa;
             font-weight: bold;
         }
@@ -261,14 +260,103 @@
             padding: 1rem;
             margin-top: 1rem;
         }
+
+        /* System Log Styles */
+        .system-log {
+            height: 100px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+        }
+        .system-log p {
+            margin: 0.25rem 0;
+            border-bottom: 1px solid rgba(255, 68, 68, 0.2);
+            padding-bottom: 0.25rem;
+        }
+
+        /* Glossary Button */
+        .glossary-btn {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 100;
+            background: #8b5cf6;
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #00ffaa;
+            transition: all 0.2s;
+        }
+        .glossary-btn:hover {
+            transform: scale(1.1);
+            background: #7c3aed;
+        }
+        .glossary-popup {
+            position: fixed;
+            bottom: 5rem;
+            right: 1rem;
+            width: 300px;
+            background: #0f172a;
+            border: 1px solid #8b5cf6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            z-index: 101;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Tour Steps */
+        .tour-step {
+            background: rgba(0, 255, 170, 0.1);
+            border-left: 3px solid #00ffaa;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
-    <!-- DEMO MODE WATERMARK -->
+    <!-- DEMO MODE WATERMARK - IMPROVED -->
     <div class="demo-watermark">DEMO MODE</div>
 
     <!-- Particle Network Background -->
     <div id="particleNetwork" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+
+    <!-- Glossary Button -->
+    <div class="glossary-btn" id="glossaryBtn">📖</div>
+    <div id="glossaryPopup" class="glossary-popup hidden">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-nunavik-purple">Quantum Glossary</h3>
+            <button id="closeGlossary" class="text-gray-400 hover:text-white">✕</button>
+        </div>
+        <div class="space-y-3 text-sm">
+            <div>
+                <strong class="text-nunavik-green">FTL Processing:</strong>
+                <p class="text-gray-300 text-xs">Faster-Than-Light quantum computations (20,000× classical speed). In our real system, this enables instant processing across dimensions.</p>
+            </div>
+            <div>
+                <strong class="text-cyan-400">Anti-Fragile:</strong>
+                <p class="text-gray-300 text-xs">System strengthens when attacked — converts threats into usable energy. Each attack increases coherence by ~12%.</p>
+            </div>
+            <div>
+                <strong class="text-nunavik-purple">Cosmic Alignments:</strong>
+                <p class="text-gray-300 text-xs">Negotiated connections with higher dimensions (up to 1e+12). Each alignment unlocks new energy sources and knowledge.</p>
+            </div>
+            <div>
+                <strong class="text-demo-red">Cultural Resonance:</strong>
+                <p class="text-gray-300 text-xs">Inuktitut syllabics act as quantum stabilizers, improving coherence by up to 67% without additional energy cost.</p>
+            </div>
+        </div>
+        <div class="mt-3 pt-2 border-t border-gray-700">
+            <a href="#contact" class="text-nunavik-green text-xs hover:underline">→ Contact for commercial access</a>
+        </div>
+    </div>
 
     <!-- Top Demo Banner -->
     <div class="bg-gradient-to-r from-demo-red to-demo-orange text-black text-center py-2 text-sm font-bold">
@@ -279,6 +367,13 @@
     <!-- Hero Section -->
     <section class="py-20 text-center relative">
         <div class="container mx-auto px-4 max-w-6xl">
+            <!-- System Status Indicator -->
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="w-3 h-3 bg-nunavik-green rounded-full animate-pulse"></div>
+                <span class="text-sm text-gray-400">DEMO SYSTEM: ONLINE</span>
+                <span class="text-xs text-gray-600">(All values simulated)</span>
+            </div>
+
             <!-- Demo Disclaimer -->
             <div class="demo-disclaimer max-w-3xl mx-auto mb-6">
                 <strong>⚠️ EDUCATIONAL DEMO</strong> — This simulation demonstrates quantum concepts using
@@ -364,6 +459,39 @@
         </div>
     </section>
 
+    <!-- Demo Tour Guide -->
+    <section class="py-8">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="quantum-card p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-bold text-lg">🎯 Demo Tour (3 Steps)</h3>
+                    <button id="startTour" class="bg-nunavik-green text-black text-xs px-3 py-1 rounded-full hover:bg-nunavik-green/80 transition">
+                        Start Tour →
+                    </button>
+                </div>
+                <div id="tourSteps" class="hidden space-y-3 text-sm">
+                    <div class="tour-step">
+                        <span class="text-nunavik-green font-bold">1.</span>
+                        <strong>Adjust the sliders</strong> — See how chaos, culture, and temporal security affect the system.
+                        Try setting chaos to <span class="text-demo-red">0.9</span> and watch energy surge!
+                    </div>
+                    <div class="tour-step">
+                        <span class="text-cyan-400 font-bold">2.</span>
+                        <strong>Run experiments</strong> — Click "Chaos Spike" or "Cultural Boost" to see predefined quantum effects.
+                        Each experiment teaches a key concept.
+                    </div>
+                    <div class="tour-step">
+                        <span class="text-nunavik-purple font-bold">3.</span>
+                        <strong>Try the Sandbox Challenge</strong> — Achieve 200+ coherence to simulate optimal quantum performance.
+                    </div>
+                    <div class="mt-2 text-xs text-gray-400">
+                        ⚡ Hover over ⓘ icons for quick explanations
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quantum Tutorial -->
     <section class="py-16">
         <div class="container mx-auto px-4 max-w-4xl">
@@ -389,7 +517,7 @@
                         <div class="w-full bg-gray-700 rounded-full h-2">
                             <div class="bg-demo-red h-2 rounded-full" style="width: 42%"></div>
                         </div>
-                        <div class="text-xs text-gray-400 mt-1">Current demo value: 0.42</div>
+                        <div class="text-xs text-gray-400 mt-1">Current demo value: <span id="tutorialChaos">0.42</span></div>
                     </div>
                 </div>
                 <div class="quantum-card p-4">
@@ -407,7 +535,7 @@
                         <div class="w-full bg-gray-700 rounded-full h-2">
                             <div class="bg-nunavik-green h-2 rounded-full" style="width: 50%"></div>
                         </div>
-                        <div class="text-xs text-gray-400 mt-1">Current demo value: 1.00</div>
+                        <div class="text-xs text-gray-400 mt-1">Current demo value: <span id="tutorialCulture">1.00</span></div>
                     </div>
                 </div>
                 <div class="quantum-card p-4">
@@ -425,7 +553,7 @@
                         <div class="w-full bg-gray-700 rounded-full h-2">
                             <div class="bg-nunavik-purple h-2 rounded-full" style="width: 50%"></div>
                         </div>
-                        <div class="text-xs text-gray-400 mt-1">Current demo value: 1.00</div>
+                        <div class="text-xs text-gray-400 mt-1">Current demo value: <span id="tutorialTemporal">1.00</span></div>
                     </div>
                 </div>
             </div>
@@ -507,26 +635,54 @@
                     <button id="temporalLockBtn" class="experiment-btn">⏳ Temporal Lock (2.0)</button>
                 </div>
 
-                <!-- Sandbox Instructions (Hidden by Default) -->
+                <!-- Sandbox Instructions (Hidden by Default) - IMPROVED -->
                 <div id="sandboxInstructions" class="hidden mt-4 p-4 bg-nunavik-gray/30 rounded-lg">
-                    <h3 class="font-bold mb-2">🧪 Quantum Sandbox Mode</h3>
-                    <p class="text-sm mb-2">Freely adjust all parameters to explore quantum concepts. Try:</p>
-                    <ul class="text-sm list-disc pl-5">
-                        <li>Max chaos + max culture → What happens to energy?</li>
-                        <li>Min temporal security → Can you stabilize coherence?</li>
-                        <li>Random combinations → Discover "quantum sweet spots"</li>
-                    </ul>
-                    <div class="mt-3 p-2 bg-nunavik-gray/50 rounded text-xs">
-                        <strong>Sandbox Challenge:</strong> Achieve 200+ coherence with energy >1e20 J.
-                        <button id="checkChallenge" class="ml-2 text-nunavik-green hover:underline">Check Progress</button>
+                    <h3 class="font-bold mb-2 flex items-center">
+                        🧪 Quantum Sandbox Challenge
+                        <span class="ml-2 text-xs bg-nunavik-purple/50 px-2 py-1 rounded-full">REWARD: Cosmic Alignment</span>
+                    </h3>
+                    <p class="text-sm mb-3">Achieve these targets by adjusting the sliders:</p>
+                    <div class="grid grid-cols-2 gap-4 mb-3">
+                        <div class="bg-nunavik-gray/50 p-2 rounded text-center">
+                            <div class="text-xs text-gray-400">TARGET COHERENCE</div>
+                            <div class="text-nunavik-green font-bold">≥ 200</div>
+                        </div>
+                        <div class="bg-nunavik-gray/50 p-2 rounded text-center">
+                            <div class="text-xs text-gray-400">TARGET ENERGY</div>
+                            <div class="text-yellow-400 font-bold">≥ 1e20 J</div>
+                        </div>
                     </div>
+                    <p class="text-xs mb-2">💡 <strong>Hint:</strong> Balance chaos and cultural resonance while keeping temporal security high.</p>
+                    <button id="checkChallenge" class="w-full bg-nunavik-purple/20 border border-nunavik-purple text-nunavik-purple py-1 rounded text-sm hover:bg-nunavik-purple/30 transition">
+                        Check Progress →
+                    </button>
+                    <div id="challengeFeedback" class="hidden mt-3 p-2 bg-nunavik-gray/50 rounded text-sm"></div>
                 </div>
 
                 <!-- Experiment Results -->
                 <div id="experimentResult" class="experiment-result hidden mt-4">
                     <h3 class="font-bold mb-2">📢 Experiment Result:</h3>
                     <p id="resultText" class="text-sm"></p>
+                    <div class="mt-2 flex gap-2">
+                        <button id="shareTwitter" class="flex-1 bg-blue-500 text-white text-xs py-1 px-2 rounded hover:bg-blue-600 transition">
+                            🐦 Share on Twitter
+                        </button>
+                        <button id="shareLinkedIn" class="flex-1 bg-blue-700 text-white text-xs py-1 px-2 rounded hover:bg-blue-800 transition">
+                            💼 Share on LinkedIn
+                        </button>
+                    </div>
                     <p class="text-xs text-gray-500 mt-2">* All values are simulated for educational purposes</p>
+                </div>
+
+                <!-- System Log -->
+                <div class="mt-4 p-3 bg-nunavik-gray/50 rounded-lg">
+                    <h4 class="font-bold mb-2 flex items-center">
+                        📜 System Log
+                        <span id="logCount" class="ml-2 text-xs bg-gray-700 px-2 py-1 rounded-full">0 events</span>
+                    </h4>
+                    <div id="systemLog" class="system-log">
+                        <p class="text-gray-400">System initialized. All values simulated for educational purposes.</p>
+                    </div>
                 </div>
 
                 <!-- Charts Container -->
@@ -544,29 +700,113 @@
         </div>
     </section>
 
-    <!-- Quantum Quiz -->
+    <!-- Demo vs. Real Comparison -->
+    <section class="py-16 bg-nunavik-gray/30">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="quantum-card p-6">
+                <h3 class="text-xl font-bold mb-4 text-center">🔄 Demo vs. Real System</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-nunavik-gray/50 p-4 rounded-lg border border-demo-red">
+                        <h4 class="font-bold mb-2 text-demo-red">Educational Demo</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Simulated quantum coherence</li>
+                            <li>• Educational energy values</li>
+                            <li>• 3 simulated dimensions</li>
+                            <li>• Free to explore</li>
+                        </ul>
+                    </div>
+                    <div class="bg-nunavik-gray/50 p-4 rounded-lg border border-nunavik-green">
+                        <h4 class="font-bold mb-2 text-nunavik-green">Commercial System</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Real 20,000× FTL processing</li>
+                            <li>• Actual cosmic energy (1e21+ J)</li>
+                            <li>• 1M+ dimensional alignments</li>
+                            <li>• 67% speed boost from syllabics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="#contact" class="bg-gradient-to-r from-nunavik-green to-cyan-500 text-white px-6 py-2 rounded-lg font-bold hover:from-nunavik-green/80 hover:to-cyan-500/80 transition">
+                        Upgrade to Real System
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Quiz - EXPANDED -->
     <section class="py-16 bg-nunavik-gray/30">
         <div class="container mx-auto px-4 max-w-2xl">
             <div class="quantum-card p-6">
                 <h2 class="text-2xl font-bold mb-4">🧠 Quantum Concept Quiz</h2>
-                <div id="quizQuestion" class="mb-4">
+                
+                <!-- Question 1 -->
+                <div id="q1" class="quiz-question">
                     <p class="font-bold mb-2">1. What does increasing the chaos parameter do?</p>
                     <div class="mt-2 space-y-2">
                         <label class="block cursor-pointer">
-                            <input type="radio" name="q1" value="a" class="mr-2">
-                            Decreases energy output
+                            <input type="radio" name="q1" value="a" class="mr-2"> A) Decreases energy output
                         </label>
                         <label class="block cursor-pointer">
-                            <input type="radio" name="q1" value="b" class="mr-2">
-                            Increases energy but reduces stability
+                            <input type="radio" name="q1" value="b" class="mr-2"> B) Increases energy but reduces stability
                         </label>
                         <label class="block cursor-pointer">
-                            <input type="radio" name="q1" value="c" class="mr-2">
-                            Has no effect
+                            <input type="radio" name="q1" value="c" class="mr-2"> C) Has no effect
                         </label>
                     </div>
                 </div>
+
+                <!-- Question 2 (Hidden initially) -->
+                <div id="q2" class="quiz-question hidden">
+                    <p class="font-bold mb-2">2. What is the purpose of cultural resonance?</p>
+                    <div class="mt-2 space-y-2">
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q2" value="a" class="mr-2"> A) To make the system prettier
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q2" value="b" class="mr-2"> B) To stabilize quantum states using Inuktitut syllabics
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q2" value="c" class="mr-2"> C) To slow down processing
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 (Hidden initially) -->
+                <div id="q3" class="quiz-question hidden">
+                    <p class="font-bold mb-2">3. What happens during a "temporal lock"?</p>
+                    <div class="mt-2 space-y-2">
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q3" value="a" class="mr-2"> A) The system freezes permanently
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q3" value="b" class="mr-2"> B) Quantum states are protected from decoherence
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q3" value="c" class="mr-2"> C) Energy output drops to zero
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 (Hidden initially) -->
+                <div id="q4" class="quiz-question hidden">
+                    <p class="font-bold mb-2">4. What is a "cosmic alignment"?</p>
+                    <div class="mt-2 space-y-2">
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q4" value="a" class="mr-2"> A) A type of yoga
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q4" value="b" class="mr-2"> B) A negotiated connection with higher dimensions for energy/knowledge
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q4" value="c" class="mr-2"> C) A software bug
+                        </label>
+                    </div>
+                </div>
+
                 <button id="checkAnswer" class="bg-nunavik-green text-white px-4 py-2 rounded-lg mt-4 hover:bg-nunavik-green/80 transition">Check Answer</button>
+                <button id="nextQuestion" class="hidden bg-nunavik-purple text-white px-4 py-2 rounded-lg mt-4 ml-2 hover:bg-nunavik-purple/80 transition">Next Question →</button>
+                
                 <div id="quizFeedback" class="hidden mt-4 p-3 bg-nunavik-gray/50 rounded-lg"></div>
             </div>
         </div>
@@ -904,6 +1144,27 @@
             }
         }
 
+        // Glossary functionality
+        document.getElementById('glossaryBtn').addEventListener('click', () => {
+            document.getElementById('glossaryPopup').classList.toggle('hidden');
+        });
+        document.getElementById('closeGlossary').addEventListener('click', () => {
+            document.getElementById('glossaryPopup').classList.add('hidden');
+        });
+
+        // Tour functionality
+        document.getElementById('startTour').addEventListener('click', () => {
+            const steps = document.getElementById('tourSteps');
+            const button = document.getElementById('startTour');
+            if (steps.classList.contains('hidden')) {
+                steps.classList.remove('hidden');
+                button.textContent = 'Hide Tour ↑';
+            } else {
+                steps.classList.add('hidden');
+                button.textContent = 'Start Tour →';
+            }
+        });
+
         // Quantum Playground Logic
         const chaosSlider = document.getElementById('chaosSlider');
         const chaosValue = document.getElementById('chaosValue');
@@ -922,6 +1183,9 @@
 
         const experimentResult = document.getElementById('experimentResult');
         const resultText = document.getElementById('resultText');
+        const logCount = document.getElementById('logCount');
+        const systemLog = document.getElementById('systemLog');
+        let logEvents = 0;
 
         // Initialize charts
         const coherenceCtx = document.getElementById('coherenceChart').getContext('2d');
@@ -980,11 +1244,32 @@
             }
         });
 
+        // Log function
+        function logEvent(message) {
+            const entry = document.createElement('p');
+            entry.className = 'text-xs mt-1';
+            entry.innerHTML = `<span class="text-gray-500">${new Date().toLocaleTimeString()}</span> ${message}`;
+            systemLog.prepend(entry);
+            logEvents++;
+            logCount.textContent = `${logEvents} events`;
+            
+            // Keep only last 10 logs
+            while (systemLog.children.length > 10) {
+                systemLog.removeChild(systemLog.lastChild);
+            }
+        }
+
         // Update slider values
         function updateSliders() {
             chaosValue.textContent = chaosSlider.value;
             cultureValue.textContent = cultureSlider.value;
             temporalValue.textContent = temporalSlider.value;
+            
+            document.getElementById('tutorialChaos').textContent = chaosSlider.value;
+            document.getElementById('tutorialCulture').textContent = cultureSlider.value;
+            document.getElementById('tutorialTemporal').textContent = temporalSlider.value;
+            
+            logEvent(`Parameters updated: Chaos=${chaosSlider.value}, Culture=${cultureSlider.value}, Temporal=${temporalSlider.value}`);
             updateDiagnostics();
         }
 
@@ -1031,6 +1316,7 @@
 
         // Experiment buttons
         document.getElementById('chaosSpikeBtn').addEventListener('click', () => {
+            logEvent("Experiment: Chaos Spike initiated (chaos=0.9)");
             chaosSlider.value = 0.9;
             updateSliders();
             showResult(`
@@ -1045,6 +1331,7 @@
         });
 
         document.getElementById('cultureBoostBtn').addEventListener('click', () => {
+            logEvent("Experiment: Cultural Boost initiated (culture=1.5)");
             cultureSlider.value = 1.5;
             updateSliders();
             showResult(`
@@ -1059,6 +1346,7 @@
         });
 
         document.getElementById('temporalLockBtn').addEventListener('click', () => {
+            logEvent("Experiment: Temporal Lock initiated (temporal=2.0)");
             temporalSlider.value = 2.0;
             updateSliders();
             showResult(`
@@ -1072,28 +1360,65 @@
             `);
         });
 
+        // Challenge functionality
         document.getElementById('checkChallenge').addEventListener('click', () => {
             const coherence = parseFloat(coherenceValue.textContent);
             const energy = parseFloat(energyValue.textContent.replace('e+', 'e')) * Math.pow(10, parseInt(energyValue.textContent.split('e+')[1] || 0));
+            const feedback = document.getElementById('challengeFeedback');
+            feedback.classList.remove('hidden');
+
             if (coherence >= 200 && energy >= 1e20) {
-                showResult(`
-                    🎉 <strong>CHALLENGE COMPLETE!</strong><br><br>
-                    You achieved:<br>
-                    • Coherence: ${coherence.toFixed(2)} (Target: 200+)<br>
-                    • Energy: ${energyValue.textContent} (Target: 1e20+ J)<br><br>
-                    <strong>Reward:</strong> In our real system, this configuration would unlock
-                    <span class="text-nunavik-green">cosmic energy trading</span> capabilities.
-                    <a href="#contact" class="text-nunavik-green hover:underline">Contact us</a> to learn more.
-                `);
+                logEvent("CHALLENGE COMPLETE: User achieved cosmic alignment!");
+                feedback.innerHTML = `
+                    <p class="text-nunavik-green font-bold">🎉 CHALLENGE COMPLETE!</p>
+                    <p class="mt-1">You achieved:</p>
+                    <ul class="text-xs mt-1 pl-4 list-disc">
+                        <li>Coherence: ${coherence.toFixed(2)} (Target: ≥200)</li>
+                        <li>Energy: ${energyValue.textContent} (Target: ≥1e20 J)</li>
+                    </ul>
+                    <p class="mt-2"><strong>Reward Unlocked:</strong> In our real system, this configuration would enable <span class="text-nunavik-purple">cosmic energy trading</span>.</p>
+                    <a href="#contact" class="block mt-2 text-center text-nunavik-green hover:underline text-xs">Contact us to access real quantum capabilities →</a>
+                `;
             } else {
-                showResult(`
-                    ⚠️ <strong>CHALLENGE IN PROGRESS</strong><br><br>
-                    Current status:<br>
-                    • Coherence: ${coherence.toFixed(2)} (Need 200+)<br>
-                    • Energy: ${energyValue.textContent} (Need 1e20+ J)<br><br>
-                    <strong>Tip:</strong> Try increasing both chaos and cultural resonance while maintaining temporal security.
-                `);
+                let advice = [];
+                if (coherence < 200) advice.push("Increase <strong>cultural resonance</strong> to boost coherence.");
+                if (energy < 1e20) advice.push("Raise <strong>chaos parameter</strong> to increase energy output.");
+                if (coherence < 190 && energy < 1e19) advice.push("Balance both <strong>chaos</strong> and <strong>culture</strong> for optimal results.");
+
+                feedback.innerHTML = `
+                    <p class="text-demo-red font-bold">⚠️ CHALLENGE IN PROGRESS</p>
+                    <p class="mt-1">Current status:</p>
+                    <ul class="text-xs mt-1 pl-4 list-disc">
+                        <li>Coherence: ${coherence.toFixed(2)} (Need ≥200)</li>
+                        <li>Energy: ${energyValue.textContent} (Need ≥1e20 J)</li>
+                    </ul>
+                    <p class="mt-2"><strong>Suggestions:</strong></p>
+                    <ul class="text-xs mt-1 pl-4 list-disc">
+                        ${advice.map(a => `<li>${a}</li>`).join('')}
+                    </ul>
+                `;
             }
+        });
+
+        // Share buttons
+        document.getElementById('shareTwitter').addEventListener('click', () => {
+            const coherence = document.getElementById('coherenceValue').textContent;
+            const energy = document.getElementById('energyValue').textContent;
+            const text = encodeURIComponent(
+                `I just achieved ${coherence} quantum coherence and ${energy} energy in the @NunavikQuantum demo! 🧪\n\nExplore the interactive playground and learn about Inuktitut-powered quantum computing!\n\n#QuantumComputing #InuktitutTech #FTL`
+            );
+            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+            logEvent("Shared results on Twitter");
+        });
+
+        document.getElementById('shareLinkedIn').addEventListener('click', () => {
+            const coherence = document.getElementById('coherenceValue').textContent;
+            const energy = document.getElementById('energyValue').textContent;
+            const text = encodeURIComponent(
+                `Exploring quantum concepts with Nunavik Quantum's interactive demo. Achieved ${coherence} coherence and ${energy} energy!\n\nThis educational tool demonstrates FTL processing and Inuktitut-powered computation. Fascinating blend of culture and technology.\n\nTry the demo: https://jsivuaraapik-crypto.github.io/quantum-business/`
+            );
+            window.open(`https://www.linkedin.com/shareArticle?mini=true&url=https://jsivuaraapik-crypto.github.io/quantum-business/&title=Nunavik%20Quantum%20Demo&summary=${text}`, '_blank');
+            logEvent("Shared results on LinkedIn");
         });
 
         function showResult(text) {
@@ -1101,7 +1426,7 @@
             experimentResult.classList.remove('hidden');
             setTimeout(() => {
                 experimentResult.classList.add('hidden');
-            }, 12000);
+            }, 15000);
         }
 
         // Mode toggle
@@ -1111,6 +1436,7 @@
             document.getElementById('sandboxModeBtn').classList.add('bg-demo-red/20');
             document.getElementById('sandboxModeBtn').classList.remove('border-demo-red', 'text-demo-red');
             document.getElementById('guidedModeBtn').classList.remove('bg-nunavik-green/20');
+            logEvent("Switched to Sandbox Mode");
         });
 
         document.getElementById('guidedModeBtn').addEventListener('click', () => {
@@ -1119,36 +1445,103 @@
             document.getElementById('sandboxModeBtn').classList.remove('bg-demo-red/20');
             document.getElementById('sandboxModeBtn').classList.add('border-demo-red', 'text-demo-red');
             document.getElementById('guidedModeBtn').classList.add('bg-nunavik-green/20');
+            logEvent("Switched to Guided Mode");
         });
 
         // Quiz functionality
-        document.getElementById('checkAnswer').addEventListener('click', () => {
-            const selected = document.querySelector('input[name="q1"]:checked');
+        let currentQuestion = 1;
+        const totalQuestions = 4;
+
+        document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
+        document.getElementById('nextQuestion').addEventListener('click', nextQuestion);
+
+        function checkAnswer() {
+            const selected = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
             const feedback = document.getElementById('quizFeedback');
             feedback.classList.remove('hidden');
 
-            if (selected && selected.value === 'b') {
-                feedback.innerHTML = `
-                    <p class="text-nunavik-green font-bold">✅ Correct!</p>
-                    <p class="text-sm mt-1">
-                        High chaos increases energy output but reduces quantum coherence (stability).
-                        In our real system, we balance this with temporal security and cultural resonance.
-                        <a href="#playground" class="text-nunavik-green hover:underline">Try it in the playground →</a>
-                    </p>
-                `;
+            if (selected) {
+                if (
+                    (currentQuestion === 1 && selected.value === 'b') ||
+                    (currentQuestion === 2 && selected.value === 'b') ||
+                    (currentQuestion === 3 && selected.value === 'b') ||
+                    (currentQuestion === 4 && selected.value === 'b')
+                ) {
+                    feedback.innerHTML = `
+                        <p class="text-nunavik-green font-bold">✅ Correct!</p>
+                        <p class="text-sm mt-1">
+                            ${getExplanation(currentQuestion)}
+                            <a href="#playground" class="text-nunavik-green hover:underline">Try it in the playground →</a>
+                        </p>
+                    `;
+                } else {
+                    feedback.innerHTML = `
+                        <p class="text-demo-red font-bold">❌ Not quite!</p>
+                        <p class="text-sm mt-1">
+                            ${getExplanation(currentQuestion)}
+                            <a href="#playground" class="text-nunavik-green hover:underline">Experiment in the playground →</a>
+                        </p>
+                    `;
+                }
             } else {
-                feedback.innerHTML = `
-                    <p class="text-demo-red font-bold">❌ Try again!</p>
-                    <p class="text-sm mt-1">
-                        Hint: Look at what happens to the energy output when you increase the chaos parameter
-                        in the <a href="#playground" class="text-nunavik-green hover:underline">playground</a>.
-                    </p>
-                `;
+                feedback.innerHTML = `<p class="text-demo-red font-bold">⚠️ Please select an answer!</p>`;
             }
-        });
+
+            // Show next question button
+            if (currentQuestion < totalQuestions) {
+                document.getElementById('nextQuestion').classList.remove('hidden');
+                document.getElementById('checkAnswer').classList.add('hidden');
+            } else {
+                document.getElementById('checkAnswer').textContent = 'Restart Quiz';
+                document.getElementById('checkAnswer').onclick = restartQuiz;
+            }
+        }
+
+        function nextQuestion() {
+            document.getElementById(`q${currentQuestion}`).classList.add('hidden');
+            currentQuestion++;
+            document.getElementById(`q${currentQuestion}`).classList.remove('hidden');
+            document.getElementById('nextQuestion').classList.add('hidden');
+            document.getElementById('checkAnswer').classList.remove('hidden');
+            document.getElementById('quizFeedback').classList.add('hidden');
+            
+            // Clear radio selection
+            document.querySelectorAll(`input[name="q${currentQuestion}"]`).forEach(radio => {
+                radio.checked = false;
+            });
+        }
+
+        function getExplanation(question) {
+            const explanations = {
+                1: "High chaos increases energy output but reduces quantum coherence (stability). In our real system, we balance this with temporal security and cultural resonance.",
+                2: "Cultural resonance uses Inuktitut syllabics to stabilize quantum states, improving coherence by up to 67% compared to classical systems.",
+                3: "Temporal security acts like a 'time shield,' protecting quantum states from decoherence using Arctic time algorithms.",
+                4: "Cosmic alignments are negotiated connections with higher dimensions (e.g., 1e+12) to exchange energy and knowledge."
+            };
+            return explanations[question];
+        }
+
+        function restartQuiz() {
+            currentQuestion = 1;
+            document.querySelectorAll('.quiz-question').forEach(q => q.classList.add('hidden'));
+            document.getElementById('q1').classList.remove('hidden');
+            document.getElementById('quizFeedback').classList.add('hidden');
+            document.getElementById('nextQuestion').classList.add('hidden');
+            document.getElementById('checkAnswer').textContent = 'Check Answer';
+            document.getElementById('checkAnswer').onclick = checkAnswer;
+            document.getElementById('checkAnswer').classList.remove('hidden');
+            
+            // Clear all radio selections
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.querySelectorAll(`input[name="q${i}"]`).forEach(radio => {
+                    radio.checked = false;
+                });
+            }
+        }
 
         // Initialize
         updateSliders();
+        logEvent("Demo initialized");
     </script>
 </body>
 </html>
