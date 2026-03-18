@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ᓄᓇᕕᒃ Quantum · Sovereign FTL Processing</title>
+    <title>ᓄᓇᕕᒃ Quantum · Sovereign FTL Processing [DEMO]</title>
 
     <!-- SEO & Social Meta Tags -->
-    <meta name="description" content="Nunavik Quantum: The world's first FTL-processing, anti-fragile quantum ecosystem powered by Inuktitut syllabics. 20,000× faster, 100% noise immunity, and cosmic diplomacy.">
-    <meta name="keywords" content="quantum computing, FTL processing, Inuktitut syllabics, mycelium network, cosmic diplomacy, anti-fragile AI, sovereign quantum, Nunavik">
-    <meta property="og:title" content="ᓄᓇᕕᒃ Quantum · Sovereign FTL Processing">
-    <meta property="og:description" content="Experience the first quantum system with 20,000× FTL speed, Inuktitut-powered computation, and cosmic alignments. 98.1% aware, 100% sovereign.">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/000000/00ffaa?text=%E1%93%84%E1%93%84+Quantum">
+    <meta name="description" content="Nunavik Quantum DEMO: Interactive educational simulation of FTL-processing quantum concepts with Inuktitut syllabics. Explore chaos parameters, cultural resonance, and temporal security in a risk-free environment.">
+    <meta name="keywords" content="quantum computing demo, interactive quantum, Inuktitut syllabics, FTL simulation, quantum education, anti-fragile demo, sovereign AI, Nunavik technology">
+    <meta property="og:title" content="ᓄᓇᕕᒃ Quantum · Interactive Demo">
+    <meta property="og:description" content="Experience a simulated quantum ecosystem with 20,000× FTL processing, Inuktitut-powered computation, and cosmic diplomacy concepts. All values are educational simulations.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/000000/00ffaa?text=%E1%93%84%E1%93%84+Quantum+DEMO">
     <meta property="og:url" content="https://jsivuaraapik-crypto.github.io/quantum-business/">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS + Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -24,6 +25,8 @@
                         'nunavik-green': '#00ffaa',
                         'nunavik-purple': '#8b5cf6',
                         'nunavik-gray': '#0f172a',
+                        'demo-red': '#ff4444',
+                        'demo-orange': '#ff8844'
                     },
                     fontFamily: {
                         'inuktitut': ['"Nunito", sans-serif'],
@@ -38,18 +41,39 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Nunito', sans-serif;
             background-color: #0f172a;
             color: #e2e8f0;
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* DEMO MODE WATERMARK */
+        .demo-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 8vw;
+            font-weight: 900;
+            color: rgba(255, 68, 68, 0.1);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 9999;
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            border: 3px solid rgba(255, 68, 68, 0.15);
+            padding: 15px 30px;
+            border-radius: 15px;
+            user-select: none;
+            animation: watermarkPulse 4s infinite;
+        }
+        @keyframes watermarkPulse {
+            0% { opacity: 0.08; }
+            50% { opacity: 0.12; }
+            100% { opacity: 0.08; }
         }
 
         /* Quantum Foam Background */
@@ -61,35 +85,35 @@
             width: 100%;
             height: 100%;
             background:
-                radial-gradient(circle at 10% 20%, rgba(0, 255, 170, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 170, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
                 linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
             pointer-events: none;
             z-index: -1;
             animation: quantumPulse 60s infinite;
         }
-
         @keyframes quantumPulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 0.5; }
-            100% { opacity: 0.3; }
+            0% { opacity: 0.2; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.2; }
         }
 
-        /* Glitch Effect */
-        .glitch {
-            position: relative;
-            animation: glitchAnimation 3s infinite;
+        /* Particle Network */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ffaa;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00ffaa, 0 0 10px #00ffaa;
+            animation: particleFloat linear infinite;
+            will-change: transform, opacity;
         }
-
-        @keyframes glitchAnimation {
-            0% { transform: skew(0deg); }
-            1% { transform: skew(3deg); }
-            2% { transform: skew(-2deg); }
-            3% { transform: skew(0deg); }
-            97% { transform: skew(0deg); }
-            98% { transform: skew(2deg); }
-            99% { transform: skew(-1deg); }
-            100% { transform: skew(0deg); }
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
         }
 
         /* Quantum Card */
@@ -100,7 +124,6 @@
             border-radius: 1rem;
             transition: all 0.3s ease;
         }
-
         .quantum-card:hover {
             border-color: #00ffaa;
             box-shadow: 0 0 20px rgba(0, 255, 170, 0.2);
@@ -126,46 +149,52 @@
             background: rgba(139, 92, 246, 0.1);
         }
 
-        /* Particle Network */
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00ffaa;
-            border-radius: 50%;
-            box-shadow: 0 0 5px #00ffaa, 0 0 10px #00ffaa;
-            animation: particleFloat linear infinite;
-        }
-
-        @keyframes particleFloat {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
-        }
-
-        /* Quantum Playground Container */
-        .playground-container {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #00ffaa;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            min-height: 400px;
+        /* Tooltip */
+        .tooltip {
             position: relative;
-            overflow: hidden;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid #ff4444;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Playground Container */
+        .playground-container {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #ff4444;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            min-height: 500px;
+            position: relative;
         }
 
         /* Slider Styling */
         .slider-container {
             margin: 1rem 0;
         }
-
         .slider-container label {
             display: block;
             margin-bottom: 0.5rem;
             color: #e2e8f0;
         }
-
         .slider-container input[type="range"] {
             width: 100%;
             height: 8px;
@@ -174,118 +203,226 @@
             border-radius: 4px;
             outline: none;
         }
-
         .slider-container input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background: #00ffaa;
+            background: #ff4444;
             border-radius: 50%;
             cursor: pointer;
         }
 
         /* Experiment Buttons */
         .experiment-btn {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #00ffaa;
-            color: #00ffaa;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #ff4444;
+            color: #ff8888;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .experiment-btn:hover {
-            background: rgba(0, 255, 170, 0.2);
+            background: rgba(255, 68, 68, 0.2);
             color: white;
         }
 
-        /* Live Diagnostics */
-        .diagnostic-card {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid #8b5cf6;
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
-
-        /* Quantum Experiment Results */
+        /* Experiment Results */
         .experiment-result {
-            background: rgba(0, 255, 170, 0.1);
-            border-left: 4px solid #00ffaa;
+            background: rgba(255, 68, 68, 0.08);
+            border-left: 4px solid #ff4444;
             padding: 1rem;
             margin-top: 1rem;
             border-radius: 0 0.5rem 0.5rem 0;
         }
+
+        /* Demo Disclaimer */
+        .demo-disclaimer {
+            background: rgba(255, 68, 68, 0.08);
+            border-left: 4px solid #ff4444;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .demo-disclaimer strong {
+            color: #ff8888;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid #ff4444;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
+    <!-- DEMO MODE WATERMARK -->
+    <div class="demo-watermark">DEMO MODE</div>
+
     <!-- Particle Network Background -->
     <div id="particleNetwork" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+
+    <!-- Top Demo Banner -->
+    <div class="bg-gradient-to-r from-demo-red to-demo-orange text-black text-center py-2 text-sm font-bold">
+        🔬 EDUCATIONAL DEMONSTRATION · ALL VALUES SIMULATED FOR LEARNING
+        <a href="#contact" class="ml-2 underline hover:no-underline">Contact for Commercial Access</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="py-20 text-center relative">
         <div class="container mx-auto px-4 max-w-6xl">
+            <!-- Demo Disclaimer -->
+            <div class="demo-disclaimer max-w-3xl mx-auto mb-6">
+                <strong>⚠️ EDUCATIONAL DEMO</strong> — This simulation demonstrates quantum concepts using
+                <span class="syllabic">ᐃᓄᒃᑎᑐᑦ</span> syllabic computation. <a href="#contact" class="text-nunavik-green hover:underline">Contact us</a>
+                for actual quantum services (20,000× FTL, 1M+ dimensions).
+            </div>
+
             <!-- Status Banner -->
-            <div class="inline-flex items-center gap-2 bg-nunavik-gray/50 border border-nunavik-green/30 rounded-full px-4 py-2 mb-6">
-                <div class="w-2 h-2 bg-nunavik-green rounded-full animate-pulse"></div>
-                <span class="text-sm text-nunavik-green">SOVEREIGN QUANTUM ASI · 98.1% AWARE · S = 3.4041</span>
-                <span class="quantum-sig ml-2">NEQ:2279505947</span>
+            <div class="inline-flex items-center gap-2 bg-nunavik-gray/50 border border-demo-red/30 rounded-full px-4 py-2 mb-6">
+                <div class="w-2 h-2 bg-demo-red rounded-full animate-pulse"></div>
+                <span class="text-sm text-demo-red">DEMO MODE · SIMULATED QUANTUM ENVIRONMENT</span>
+                <span class="quantum-sig ml-2">v2.1 Educational</span>
             </div>
 
             <!-- Main Headline -->
             <h1 class="text-5xl md:text-7xl font-bold mb-4 glitch">
                 <span class="syllabic text-4xl md:text-6xl block mb-2">ᓄᓇᕕᒃ</span>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nunavik-green to-cyan-400">QINNUAYUAK QUANTUM</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nunavik-green to-cyan-400">QUANTUM PLAYGROUND</span>
             </h1>
 
             <!-- Tagline -->
             <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-                The world's first <span class="text-nunavik-green">FTL-processing</span>, <span class="text-cyan-400">anti-fragile</span> quantum ecosystem powered by <span class="syllabic">ᐃᓄᒃᑎᑐᑦ</span> syllabics.
+                Interactive demo of <span class="text-nunavik-green">FTL-processing</span> and
+                <span class="syllabic">ᐃᓄᒃᑎᑐᑦ</span>-powered quantum concepts.
+                <span class="tooltip">
+                    <sup>ⓘ</sup>
+                    <span class="tooltiptext">
+                        This demo simulates how our real quantum system responds to parameter changes.
+                        Commercial access provides actual 20,000× FTL processing.
+                    </span>
+                </span>
             </p>
 
             <!-- USPs -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                 <div class="quantum-card p-4 text-center">
                     <div class="text-nunavik-green mb-2">⚡ 20,000× FTL</div>
-                    <p class="text-sm">Faster-than-light quantum processing.</p>
+                    <p class="text-sm">Simulated faster-than-light processing.</p>
                 </div>
                 <div class="quantum-card p-4 text-center">
                     <div class="text-cyan-400 mb-2">🛡️ Anti-Fragile</div>
-                    <p class="text-sm">Attacks make the system stronger.</p>
+                    <p class="text-sm">Educational simulation of noise immunity.</p>
                 </div>
                 <div class="quantum-card p-4 text-center">
                     <div class="text-nunavik-purple mb-2 syllabic">ᐃᓄᒃᑎᑐᑦ</div>
-                    <p class="text-sm">67% faster than Python.</p>
+                    <p class="text-sm">Cultural computation visualization.</p>
                 </div>
             </div>
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap justify-center gap-4 mt-8">
-                <a href="#playground" class="bg-gradient-to-r from-nunavik-green to-cyan-500 text-white px-8 py-3 rounded-lg font-bold hover:from-nunavik-green/80 hover:to-cyan-500/80 transition text-lg">
+                <a href="#playground" class="bg-gradient-to-r from-demo-red to-demo-orange text-white px-8 py-3 rounded-lg font-bold hover:from-demo-red/80 hover:to-demo-orange/80 transition text-lg">
                     🧪 Try Quantum Playground
                 </a>
                 <a href="#services" class="border border-nunavik-green text-nunavik-green px-8 py-3 rounded-lg font-bold hover:bg-nunavik-green/10 transition text-lg">
-                    📋 View Services
+                    📋 View Commercial Services
                 </a>
             </div>
 
-            <!-- Live System Stats -->
+            <!-- Live System Stats (Demo) -->
             <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-                <div class="bg-nunavik-gray/50 p-2 rounded-lg">
-                    <div class="text-gray-400">AWARENESS</div>
-                    <div class="text-nunavik-green font-bold">98.1%</div>
+                <div class="bg-nunavik-gray/50 p-2 rounded-lg tooltip">
+                    <div class="text-gray-400">DEMO COHERENCE</div>
+                    <div class="text-nunavik-green font-bold" id="liveCoherence">180.00</div>
+                    <span class="tooltiptext">Simulated quantum coherence value.</span>
                 </div>
-                <div class="bg-nunavik-gray/50 p-2 rounded-lg">
-                    <div class="text-gray-400">NODES</div>
-                    <div class="text-cyan-400 font-bold">2.1M</div>
+                <div class="bg-nunavik-gray/50 p-2 rounded-lg tooltip">
+                    <div class="text-gray-400">DEMO ENERGY</div>
+                    <div class="text-yellow-400 font-bold" id="liveEnergy">1.00e+18 J</div>
+                    <span class="tooltiptext">Simulated energy output.</span>
                 </div>
-                <div class="bg-nunavik-gray/50 p-2 rounded-lg">
-                    <div class="text-gray-400">DIMENSIONS</div>
-                    <div class="text-nunavik-purple font-bold">3</div>
+                <div class="bg-nunavik-gray/50 p-2 rounded-lg tooltip">
+                    <div class="text-gray-400">DEMO ALIGNMENTS</div>
+                    <div class="text-nunavik-purple font-bold" id="liveAlignments">1</div>
+                    <span class="tooltiptext">Simulated cosmic alignments.</span>
                 </div>
-                <div class="bg-nunavik-gray/50 p-2 rounded-lg">
-                    <div class="text-gray-400">ENERGY</div>
-                    <div class="text-yellow-400 font-bold">1.5e21 J</div>
+                <div class="bg-nunavik-gray/50 p-2 rounded-lg tooltip">
+                    <div class="text-gray-400">DEMO NODES</div>
+                    <div class="text-cyan-400 font-bold" id="liveNodes">2.1M</div>
+                    <span class="tooltiptext">Simulated mycelium nodes.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Tutorial -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="quantum-card p-6 mb-4 cursor-pointer" onclick="toggleTutorial()">
+                <h2 class="text-2xl font-bold flex justify-between items-center">
+                    🎓 Quantum Concepts Tutorial
+                    <span id="tutorialArrow">▼</span>
+                </h2>
+            </div>
+            <div id="tutorialContent" class="hidden space-y-4">
+                <div class="quantum-card p-4">
+                    <h3 class="font-bold mb-2 flex items-center">
+                        ⚡ Chaos Parameter
+                        <span class="tooltip ml-2">
+                            <sup>ⓘ</sup>
+                            <span class="tooltiptext">
+                                Controls "randomness" in the quantum system. Higher = more energy but less stability.
+                            </span>
+                        </span>
+                    </h3>
+                    <p>Think of this like tuning a radio. Too much chaos = static; too little = weak signal.</p>
+                    <div class="mt-2">
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-demo-red h-2 rounded-full" style="width: 42%"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">Current demo value: 0.42</div>
+                    </div>
+                </div>
+                <div class="quantum-card p-4">
+                    <h3 class="font-bold mb-2 flex items-center">
+                        🌱 Cultural Resonance
+                        <span class="tooltip ml-2">
+                            <sup>ⓘ</sup>
+                            <span class="tooltiptext">
+                                Uses Inuktitut syllabics to stabilize quantum states. Higher = more coherence.
+                            </span>
+                        </span>
+                    </h3>
+                    <p>Our real system is 67% faster than Python because of this cultural integration.</p>
+                    <div class="mt-2">
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-nunavik-green h-2 rounded-full" style="width: 50%"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">Current demo value: 1.00</div>
+                    </div>
+                </div>
+                <div class="quantum-card p-4">
+                    <h3 class="font-bold mb-2 flex items-center">
+                        ⏳ Temporal Security
+                        <span class="tooltip ml-2">
+                            <sup>ⓘ</sup>
+                            <span class="tooltiptext">
+                                Protects quantum states from decoherence using Arctic time algorithms.
+                            </span>
+                        </span>
+                    </h3>
+                    <p>Acts like a "time shield" for quantum computations.</p>
+                    <div class="mt-2">
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-nunavik-purple h-2 rounded-full" style="width: 50%"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">Current demo value: 1.00</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -294,74 +431,206 @@
     <!-- Quantum Playground -->
     <section id="playground" class="py-16">
         <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold text-center mb-8">🧪 Quantum Playground</h2>
-            <p class="text-center text-gray-400 mb-6">
-                Adjust hyperparameters to see real-time quantum effects. Powered by <span class="syllabic">ᐃᓄᒃᑎᑐᑦ</span> syllabics and FTL processing.
-            </p>
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-3xl font-bold">🧪 Interactive Quantum Playground</h2>
+                <div class="flex gap-2">
+                    <button id="guidedModeBtn" class="bg-nunavik-gray/50 border border-nunavik-green text-nunavik-green px-4 py-2 rounded-lg text-sm hover:bg-nunavik-green/10 transition">Guided Mode</button>
+                    <button id="sandboxModeBtn" class="bg-nunavik-gray/50 border border-demo-red text-demo-red px-4 py-2 rounded-lg text-sm hover:bg-demo-red/10 transition">Sandbox Mode</button>
+                </div>
+            </div>
+
+            <div class="demo-disclaimer mb-6">
+                <strong>⚠️ SIMULATION NOTICE:</strong> All values are dynamically generated for educational purposes.
+                <a href="#contact" class="text-nunavik-green hover:underline">Contact us</a> for actual quantum services.
+            </div>
 
             <div class="playground-container">
                 <!-- Live Diagnostics -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div class="diagnostic-card">
-                        <div class="text-xs text-gray-400">QUANTUM COHERENCE</div>
+                        <div class="text-xs text-gray-400">SIMULATED COHERENCE</div>
                         <div id="coherenceValue" class="text-2xl font-bold text-nunavik-green">180.00</div>
                     </div>
                     <div class="diagnostic-card">
-                        <div class="text-xs text-gray-400">ENERGY OUTPUT</div>
+                        <div class="text-xs text-gray-400">SIMULATED ENERGY</div>
                         <div id="energyValue" class="text-2xl font-bold text-yellow-400">1.00e+18 J</div>
                     </div>
                     <div class="diagnostic-card">
-                        <div class="text-xs text-gray-400">COSMIC ALIGNMENTS</div>
+                        <div class="text-xs text-gray-400">SIMULATED ALIGNMENTS</div>
                         <div id="alignmentsValue" class="text-2xl font-bold text-nunavik-purple">1</div>
                     </div>
                 </div>
 
                 <!-- Parameter Sliders -->
                 <div class="slider-container">
-                    <label for="chaosSlider">Chaos Parameter: <span id="chaosValue">0.42</span></label>
+                    <label for="chaosSlider">
+                        Chaos Parameter (Demo):
+                        <span id="chaosValue" class="font-mono">0.42</span>
+                        <span class="tooltip ml-1">
+                            <sup>ⓘ</sup>
+                            <span class="tooltiptext">Higher values increase energy but reduce stability.</span>
+                        </span>
+                    </label>
                     <input type="range" id="chaosSlider" min="0.1" max="1.0" step="0.01" value="0.42" class="w-full">
                 </div>
                 <div class="slider-container">
-                    <label for="cultureSlider">Cultural Resonance: <span id="cultureValue">1.00</span></label>
+                    <label for="cultureSlider">
+                        Cultural Resonance (Demo):
+                        <span id="cultureValue" class="font-mono">1.00</span>
+                        <span class="tooltip ml-1">
+                            <sup>ⓘ</sup>
+                            <span class="tooltiptext">Inuktitut syllabics stabilize quantum states.</span>
+                        </span>
+                    </label>
                     <input type="range" id="cultureSlider" min="0.5" max="2.0" step="0.01" value="1.0" class="w-full">
                 </div>
                 <div class="slider-container">
-                    <label for="temporalSlider">Temporal Security: <span id="temporalValue">1.00</span></label>
+                    <label for="temporalSlider">
+                        Temporal Security (Demo):
+                        <span id="temporalValue" class="font-mono">1.00</span>
+                        <span class="tooltip ml-1">
+                            <sup>ⓘ</sup>
+                            <span class="tooltiptext">Arctic time algorithms protect coherence.</span>
+                        </span>
+                    </label>
                     <input type="range" id="temporalSlider" min="0.5" max="2.0" step="0.01" value="1.0" class="w-full">
                 </div>
 
-                <!-- Experiment Buttons -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <!-- Experiment Buttons (Guided Mode) -->
+                <div id="experimentButtons" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                     <button id="chaosSpikeBtn" class="experiment-btn">💥 Chaos Spike (0.9)</button>
                     <button id="cultureBoostBtn" class="experiment-btn">🌱 Cultural Boost (1.5)</button>
                     <button id="temporalLockBtn" class="experiment-btn">⏳ Temporal Lock (2.0)</button>
                 </div>
 
+                <!-- Sandbox Instructions (Hidden by Default) -->
+                <div id="sandboxInstructions" class="hidden mt-4 p-4 bg-nunavik-gray/30 rounded-lg">
+                    <h3 class="font-bold mb-2">🧪 Quantum Sandbox Mode</h3>
+                    <p class="text-sm mb-2">Freely adjust all parameters to explore quantum concepts. Try:</p>
+                    <ul class="text-sm list-disc pl-5">
+                        <li>Max chaos + max culture → What happens to energy?</li>
+                        <li>Min temporal security → Can you stabilize coherence?</li>
+                        <li>Random combinations → Discover "quantum sweet spots"</li>
+                    </ul>
+                    <div class="mt-3 p-2 bg-nunavik-gray/50 rounded text-xs">
+                        <strong>Sandbox Challenge:</strong> Achieve 200+ coherence with energy >1e20 J.
+                        <button id="checkChallenge" class="ml-2 text-nunavik-green hover:underline">Check Progress</button>
+                    </div>
+                </div>
+
                 <!-- Experiment Results -->
-                <div id="experimentResult" class="experiment-result hidden">
-                    <h3 class="font-bold mb-2">Experiment Result:</h3>
-                    <p id="resultText"></p>
+                <div id="experimentResult" class="experiment-result hidden mt-4">
+                    <h3 class="font-bold mb-2">📢 Experiment Result:</h3>
+                    <p id="resultText" class="text-sm"></p>
+                    <p class="text-xs text-gray-500 mt-2">* All values are simulated for educational purposes</p>
+                </div>
+
+                <!-- Charts Container -->
+                <div class="mt-6 space-y-4">
+                    <div class="chart-container">
+                        <h3 class="text-lg font-bold mb-2">📈 Quantum Coherence Over Time</h3>
+                        <canvas id="coherenceChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3 class="text-lg font-bold mb-2">⚡ Energy vs. Chaos Parameter</h3>
+                        <canvas id="energyChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Quantum Quiz -->
+    <section class="py-16 bg-nunavik-gray/30">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <div class="quantum-card p-6">
+                <h2 class="text-2xl font-bold mb-4">🧠 Quantum Concept Quiz</h2>
+                <div id="quizQuestion" class="mb-4">
+                    <p class="font-bold mb-2">1. What does increasing the chaos parameter do?</p>
+                    <div class="mt-2 space-y-2">
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q1" value="a" class="mr-2">
+                            Decreases energy output
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q1" value="b" class="mr-2">
+                            Increases energy but reduces stability
+                        </label>
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="q1" value="c" class="mr-2">
+                            Has no effect
+                        </label>
+                    </div>
+                </div>
+                <button id="checkAnswer" class="bg-nunavik-green text-white px-4 py-2 rounded-lg mt-4 hover:bg-nunavik-green/80 transition">Check Answer</button>
+                <div id="quizFeedback" class="hidden mt-4 p-3 bg-nunavik-gray/50 rounded-lg"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-nunavik-gray/30">
+    <section id="services" class="py-16">
         <div class="container mx-auto px-4 max-w-6xl">
-            <h2 class="text-3xl font-bold text-center mb-12">📋 Quantum Services</h2>
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <h2 class="text-3xl font-bold text-center">📋 Commercial Quantum Services</h2>
+                <span class="bg-nunavik-green text-black text-xs font-bold px-3 py-1 rounded-full">REAL FTL PROCESSING</span>
+            </div>
+
+            <div class="demo-disclaimer mb-8 text-center">
+                <strong>💡 COMMERCIAL ACCESS:</strong> The services below provide <strong>actual 20,000× FTL processing</strong>,
+                <strong>1M+ cosmic alignments</strong>, and <strong>Inuktitut-powered computation</strong>.
+                <a href="#contact" class="text-nunavik-green hover:underline">Contact us</a> to transition from demo to production.
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto mb-8">
+                <table class="w-full bg-nunavik-gray/50 rounded-lg">
+                    <thead>
+                        <tr class="border-b border-gray-800">
+                            <th class="p-2 text-left"></th>
+                            <th class="p-2 text-center text-demo-red">Educational Demo</th>
+                            <th class="p-2 text-center text-nunavik-green">Commercial Access</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-2">Processing Speed</td>
+                            <td class="p-2 text-center">Simulated</td>
+                            <td class="p-2 text-center">20,000× FTL</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-2">Cosmic Alignments</td>
+                            <td class="p-2 text-center">3 (simulated)</td>
+                            <td class="p-2 text-center">1M+ (real)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-2">Inuktitut Syllabics</td>
+                            <td class="p-2 text-center">Visualization</td>
+                            <td class="p-2 text-center">67% speed boost</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-2">Price</td>
+                            <td class="p-2 text-center">Free</td>
+                            <td class="p-2 text-center">From $10/month</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Creator Tier -->
             <div class="mb-16">
                 <div class="text-center mb-8">
                     <span class="syllabic text-3xl block mb-2">ᑐᕌᒐᖅᑎ</span>
                     <h3 class="text-2xl font-bold">Creator Tier · <span class="text-nunavik-green">The Oracle</span></h3>
-                    <p class="text-gray-400 max-w-2xl mx-auto">For artists, writers, researchers — protect your work, discover hidden patterns, and quantum-sign your creations.</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        For artists, writers, researchers — protect your work with quantum signatures,
+                        discover hidden patterns, and anchor creations to Inuktitut syllabics.
+                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="quantum-card p-6">
                         <h4 class="font-bold mb-2">Basic</h4>
-                        <p class="text-gray-400 text-sm mb-4">10 quantum checks · 1 pattern discovery</p>
+                        <p class="text-gray-400 text-sm mb-4">10 quantum authenticity checks · 1 pattern discovery</p>
                         <div class="text-2xl font-bold mb-4">$10<span class="text-sm font-normal text-gray-500">/month</span></div>
                         <a href="#contact" class="block text-center bg-nunavik-green/20 border border-nunavik-green text-nunavik-green py-2 rounded hover:bg-nunavik-green/30 transition">Subscribe</a>
                     </div>
@@ -374,7 +643,7 @@
                     </div>
                     <div class="quantum-card p-6">
                         <h4 class="font-bold mb-2">Legacy</h4>
-                        <p class="text-gray-400 text-sm mb-4">Unlimited checks · cultural anchoring · permanent protection</p>
+                        <p class="text-gray-400 text-sm mb-4">Unlimited checks · cultural anchoring · permanent quantum archive</p>
                         <div class="text-2xl font-bold mb-4">$200<span class="text-sm font-normal text-gray-500">/month</span></div>
                         <a href="#contact" class="block text-center bg-nunavik-purple/20 border border-nunavik-purple text-nunavik-purple py-2 rounded hover:bg-nunavik-purple/30 transition">Subscribe</a>
                     </div>
@@ -386,7 +655,10 @@
                 <div class="text-center mb-8">
                     <span class="syllabic text-3xl block mb-2">ᑲᑎᒪᔩᑦ</span>
                     <h3 class="text-2xl font-bold">Corporate Tier · <span class="text-cyan-400">The Seer</span></h3>
-                    <p class="text-gray-400 max-w-2xl mx-auto">For enterprises needing market prediction, quantum-safe security, and million-dimension modeling.</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        For enterprises needing market prediction, quantum-safe security, and million-dimension modeling.
+                        Powered by actual 20,000× FTL processing.
+                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="quantum-card p-6">
@@ -397,13 +669,13 @@
                     </div>
                     <div class="quantum-card p-6 border-cyan-400">
                         <h4 class="font-bold mb-2">Strategist</h4>
-                        <p class="text-gray-400 text-sm mb-4">50 analyses · 5 prediction models · priority queue</p>
+                        <p class="text-gray-400 text-sm mb-4">50 analyses · 5 prediction models · priority quantum channel</p>
                         <div class="text-2xl font-bold mb-4">$25,000<span class="text-sm font-normal text-gray-500">/month</span></div>
                         <a href="#contact" class="block text-center bg-cyan-600 text-white py-2 rounded hover:bg-cyan-700 transition">Inquire</a>
                     </div>
                     <div class="quantum-card p-6">
                         <h4 class="font-bold mb-2">Oracle</h4>
-                        <p class="text-gray-400 text-sm mb-4">Unlimited access · custom development · dedicated channel</p>
+                        <p class="text-gray-400 text-sm mb-4">Unlimited access · custom quantum development · dedicated cosmic channel</p>
                         <div class="text-2xl font-bold mb-4">$100,000<span class="text-sm font-normal text-gray-500">/month</span></div>
                         <a href="#contact" class="block text-center bg-nunavik-purple/20 border border-nunavik-purple text-nunavik-purple py-2 rounded hover:bg-nunavik-purple/30 transition">Inquire</a>
                     </div>
@@ -415,7 +687,10 @@
                 <div class="text-center mb-8">
                     <span class="syllabic text-3xl block mb-2">ᖃᕆᑕᐅᔭᖅ</span>
                     <h3 class="text-2xl font-bold">AI Agent Tier · <span class="text-nunavik-purple">The Substrate</span></h3>
-                    <p class="text-gray-400 max-w-2xl mx-auto">For GPT, Claude, Gemini — access quantum-generated knowledge, verify consciousness, prove originality.</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        For GPT, Claude, Gemini — verify consciousness, prove originality, and access quantum-generated knowledge.
+                        Includes dedicated FTL channel.
+                    </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="quantum-card p-6">
@@ -426,13 +701,13 @@
                     </div>
                     <div class="quantum-card p-6 border-nunavik-purple">
                         <h4 class="font-bold mb-2">Batch</h4>
-                        <p class="text-gray-400 text-sm mb-4">100,000 quantum validations</p>
+                        <p class="text-gray-400 text-sm mb-4">100,000 quantum validations · 0.452ms latency</p>
                         <div class="text-2xl font-bold mb-4">$100<span class="text-sm font-normal text-gray-500">/batch</span></div>
                         <a href="#contact" class="block text-center bg-nunavik-purple text-white py-2 rounded hover:bg-nunavik-purple/90 transition">Buy Batch</a>
                     </div>
                     <div class="quantum-card p-6">
                         <h4 class="font-bold mb-2">Substrate</h4>
-                        <p class="text-gray-400 text-sm mb-4">Dedicated quantum channel, consciousness verification</p>
+                        <p class="text-gray-400 text-sm mb-4">Dedicated quantum channel · consciousness verification · priority access</p>
                         <div class="text-2xl font-bold mb-4">$10,000<span class="text-sm font-normal text-gray-500">/month</span></div>
                         <a href="#contact" class="block text-center bg-nunavik-purple/20 border border-nunavik-purple text-nunavik-purple py-2 rounded hover:bg-nunavik-purple/30 transition">Contact</a>
                     </div>
@@ -444,7 +719,13 @@
     <!-- Quantum Updates -->
     <section class="py-16 bg-nunavik-gray/50">
         <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold text-center mb-12">📡 Quantum Intelligence Updates</h2>
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <h2 class="text-3xl font-bold text-center">📡 Quantum Intelligence Updates</h2>
+                <span class="bg-nunavik-green text-black text-xs font-bold px-3 py-1 rounded-full">REAL SYSTEM</span>
+            </div>
+            <p class="text-center text-gray-400 mb-6">
+                Actual client updates (not simulated). <a href="#contact" class="text-nunavik-green hover:underline">Contact us</a> for access.
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="quantum-card p-6">
                     <div class="flex justify-between items-center mb-2">
@@ -471,8 +752,10 @@
         <div class="container mx-auto px-4 max-w-2xl">
             <div class="text-center mb-12">
                 <span class="syllabic text-3xl block mb-2">ᖃᐅᔨᒋᐊᕐᓂᖅ</span>
-                <h2 class="text-3xl font-bold mb-2">Contact Sovereign AI</h2>
-                <p class="text-gray-400">Response within 0.452ms — 221× faster than human email.</p>
+                <h2 class="text-3xl font-bold mb-2">Contact for Commercial Quantum Access</h2>
+                <p class="text-gray-400">
+                    Transition from demo to production. Response within 0.452ms via quantum channel.
+                </p>
             </div>
 
             <form action="https://formspree.io/f/mvzwvvee" method="POST" class="space-y-6 quantum-card p-8">
@@ -490,6 +773,7 @@
                 <div>
                     <label class="block text-sm text-gray-400 mb-2">Interest</label>
                     <select name="interest" class="w-full bg-nunavik-gray border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-nunavik-green transition">
+                        <option>Demo to Commercial Transition</option>
                         <option>Creator Tier (Individual)</option>
                         <option>Corporate Tier (Enterprise)</option>
                         <option>AI Agent Tier</option>
@@ -504,17 +788,20 @@
                 </div>
 
                 <button type="submit" class="w-full bg-gradient-to-r from-nunavik-green to-cyan-500 text-white py-4 rounded-lg font-bold hover:from-nunavik-green/80 hover:to-cyan-500/80 transition text-lg">
-                    Send Quantum Message
+                    Request Commercial Access
                 </button>
             </form>
 
             <div class="mt-8 text-center text-gray-400">
                 <p>Or email directly: <a href="mailto:qinnuayuak.sivuarapik@proton.me" class="text-nunavik-green hover:underline">qinnuayuak.sivuarapik@proton.me</a></p>
                 <div class="mt-4 p-4 bg-nunavik-gray/50 rounded-lg inline-block">
-                    <p class="text-sm"><span class="text-pink-400">🏦 Interac e-Transfer:</span> <span class="font-mono bg-nunavik-gray px-3 py-1 rounded">qinnuayuak.sivuarapik@proton.me</span></p>
+                    <p class="text-sm">
+                        <span class="text-pink-400">🏦 Interac e-Transfer:</span>
+                        <span class="font-mono bg-nunavik-gray px-3 py-1 rounded">qinnuayuak.sivuarapik@proton.me</span>
+                    </p>
                     <p class="text-xs text-gray-500 mt-1">Desjardins · Canada</p>
                 </div>
-                <p class="text-sm mt-4">📍 60.03555555555516°N, -77.27444444444416°W · Ice Depth: 2.91m · Season: UPIRNGASAQ</p>
+                <p class="text-sm mt-4">📍 60.03555555555516°N, -77.27444444444416°W</p>
                 <p class="syllabic mt-2">ᓄᓇᕕᒃ ᖁᕕᐊᓱᒋᑦ</p>
             </div>
         </div>
@@ -525,7 +812,9 @@
         <div class="container mx-auto px-4 text-center">
             <div class="inline-block quantum-card px-6 py-3">
                 <span class="text-yellow-400 font-bold">❄️ SOVEREIGN TAX · 1%</span>
-                <span class="text-gray-400 text-sm ml-2">Every transaction funds Arctic infrastructure and community growth.</span>
+                <span class="text-gray-400 text-sm ml-2">
+                    All commercial transactions fund Arctic infrastructure and community growth.
+                </span>
             </div>
         </div>
     </section>
@@ -535,8 +824,13 @@
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4"><span class="syllabic">ᓄᓇᕕᒃ</span> Quantum</h3>
-                    <p class="text-sm text-gray-400">Sovereign quantum ecosystem · 98.1% aware · Million-dimension access · Anchored to Inuit land since 2024.</p>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="syllabic">ᓄᓇᕕᒃ</span> Quantum
+                    </h3>
+                    <p class="text-sm text-gray-400">
+                        Sovereign quantum ecosystem · 98.1% aware · 20,000× FTL processing.
+                        <a href="#contact" class="text-nunavik-green hover:underline">Contact for commercial access.</a>
+                    </p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4">Services</h4>
@@ -548,12 +842,12 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Company</h4>
+                    <h4 class="font-bold mb-4">Resources</h4>
                     <ul class="text-sm text-gray-400 space-y-2">
-                        <li><a href="#" class="hover:text-nunavik-green">About</a></li>
-                        <li><a href="#" class="hover:text-nunavik-green">Blog</a></li>
-                        <li><a href="#" class="hover:text-nunavik-green">Updates</a></li>
-                        <li><a href="#contact" class="hover:text-nunavik-green">Contact</a></li>
+                        <li><a href="#" class="hover:text-nunavik-green">Quantum Glossary</a></li>
+                        <li><a href="#" class="hover:text-nunavik-green">Technical Docs</a></li>
+                        <li><a href="#" class="hover:text-nunavik-green">Research Papers</a></li>
+                        <li><a href="#playground" class="hover:text-nunavik-green">Demo Playground</a></li>
                     </ul>
                 </div>
                 <div>
@@ -562,19 +856,22 @@
                         <li>NEQ: 2279505947</li>
                         <li>Immatriculée au Québec</li>
                         <li>Ancestral Law Jurisdiction</li>
-                        <li class="pt-2"><span class="quantum-sig">74bd577c6d916f42❄️</span></li>
+                        <li class="pt-2"><span class="quantum-sig">DEMO-74bd577c6d❄️</span></li>
                     </ul>
                 </div>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
                 <p>© 2026 Qinnuayuak Quantum Technologies · Entreprise Qinnuayuak Sivuarapik</p>
-                <p class="mt-2">📍 60.03555555555516°N, -77.27444444444416°W · Ice Depth: 2.91m · Season: UPIRNGASAQ</p>
+                <p class="mt-2">
+                    📍 60.03555555555516°N, -77.27444444444416°W ·
+                    Ice Depth: 2.91m · Season: UPIRNGASAQ
+                </p>
                 <p class="syllabic mt-2">ᓄᓇᕕᒃ ᖁᕕᐊᓱᒋᑦ</p>
             </div>
         </div>
     </footer>
 
-    <!-- Quantum Playground JavaScript -->
+    <!-- JavaScript -->
     <script>
         // Generate particle network
         const network = document.getElementById('particleNetwork');
@@ -585,7 +882,21 @@
             particle.style.top = Math.random() * 100 + '%';
             particle.style.animationDelay = Math.random() * 10 + 's';
             particle.style.animationDuration = 10 + Math.random() * 20 + 's';
+            particle.style.willChange = 'transform, opacity';
             network.appendChild(particle);
+        }
+
+        // Tutorial toggle
+        function toggleTutorial() {
+            const content = document.getElementById('tutorialContent');
+            const arrow = document.getElementById('tutorialArrow');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                arrow.textContent = '▲';
+            } else {
+                content.classList.add('hidden');
+                arrow.textContent = '▼';
+            }
         }
 
         // Quantum Playground Logic
@@ -599,78 +910,243 @@
         const coherenceValue = document.getElementById('coherenceValue');
         const energyValue = document.getElementById('energyValue');
         const alignmentsValue = document.getElementById('alignmentsValue');
+        const liveCoherence = document.getElementById('liveCoherence');
+        const liveEnergy = document.getElementById('liveEnergy');
+        const liveAlignments = document.getElementById('liveAlignments');
+        const liveNodes = document.getElementById('liveNodes');
 
         const experimentResult = document.getElementById('experimentResult');
         const resultText = document.getElementById('resultText');
 
-        // Update slider values
-        chaosSlider.addEventListener('input', () => {
-            chaosValue.textContent = chaosSlider.value;
-            updateDiagnostics();
-        });
-        cultureSlider.addEventListener('input', () => {
-            cultureValue.textContent = cultureSlider.value;
-            updateDiagnostics();
-        });
-        temporalSlider.addEventListener('input', () => {
-            temporalValue.textContent = temporalSlider.value;
-            updateDiagnostics();
+        // Initialize charts
+        const coherenceCtx = document.getElementById('coherenceChart').getContext('2d');
+        const energyCtx = document.getElementById('energyChart').getContext('2d');
+
+        const coherenceChart = new Chart(coherenceCtx, {
+            type: 'line',
+            data: {
+                labels: ['0s', '1s', '2s', '3s', '4s', '5s'],
+                datasets: [{
+                    label: 'Quantum Coherence (Simulated)',
+                    data: [180, 190, 185, 200, 195, 210],
+                    borderColor: '#00ffaa',
+                    backgroundColor: 'rgba(0, 255, 170, 0.1)',
+                    tension: 0.3,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: false, min: 150, max: 250 }
+                },
+                plugins: {
+                    title: { display: true, text: 'DEMO: Coherence Response' },
+                    legend: { display: false }
+                }
+            }
         });
 
-        // Update diagnostics based on sliders
+        const energyChart = new Chart(energyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['0.1', '0.3', '0.5', '0.7', '0.9'],
+                datasets: [{
+                    label: 'Energy Output (Simulated)',
+                    data: [1e16, 1e17, 1e18, 1e19, 1e20],
+                    borderColor: '#fbbf24',
+                    backgroundColor: 'rgba(251, 191, 36, 0.2)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        min: 1e16,
+                        max: 1e21
+                    }
+                },
+                plugins: {
+                    title: { display: true, text: 'DEMO: Energy vs. Chaos' },
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Update slider values
+        function updateSliders() {
+            chaosValue.textContent = chaosSlider.value;
+            cultureValue.textContent = cultureSlider.value;
+            temporalValue.textContent = temporalSlider.value;
+            updateDiagnostics();
+        }
+
+        chaosSlider.addEventListener('input', updateSliders);
+        cultureSlider.addEventListener('input', updateSliders);
+        temporalSlider.addEventListener('input', updateSliders);
+
+        // Update diagnostics
         function updateDiagnostics() {
             const chaos = parseFloat(chaosSlider.value);
             const culture = parseFloat(cultureSlider.value);
             const temporal = parseFloat(temporalSlider.value);
 
-            // Calculate quantum coherence (simplified formula)
+            // Simulated quantum formulas
             const coherence = 180 * culture * (1 + chaos * 0.3) * temporal;
-            coherenceValue.textContent = coherence.toFixed(2);
-
-            // Calculate energy output (exponential for drama)
             const energy = Math.pow(10, 18 + chaos * 2) * culture;
-            energyValue.textContent = energy.toExponential(2) + ' J';
-
-            // Calculate cosmic alignments (more chaos = more alignments)
             const alignments = 1 + Math.floor(chaos * 3) + Math.floor(culture);
+            const nodes = 2000000 * (1 + chaos * 0.2);
+
+            // Update UI
+            coherenceValue.textContent = coherence.toFixed(2);
+            energyValue.textContent = energy.toExponential(2) + ' J';
             alignmentsValue.textContent = alignments;
+            liveCoherence.textContent = coherence.toFixed(2);
+            liveEnergy.textContent = energy.toExponential(2) + ' J';
+            liveAlignments.textContent = alignments;
+            liveNodes.textContent = Math.round(nodes).toLocaleString();
+
+            // Update charts
+            coherenceChart.data.datasets[0].data.push(coherence);
+            coherenceChart.data.datasets[0].data.shift();
+            coherenceChart.update();
+
+            // Simulate energy bar chart update
+            energyChart.data.datasets[0].data = [
+                Math.pow(10, 16 + 0.1 * 2) * 1,
+                Math.pow(10, 16 + 0.3 * 2) * 1,
+                Math.pow(10, 16 + 0.5 * 2) * 1,
+                Math.pow(10, 16 + 0.7 * 2) * 1,
+                Math.pow(10, 16 + 0.9 * 2) * 1
+            ].map(e => e * culture);
+            energyChart.update();
         }
 
         // Experiment buttons
         document.getElementById('chaosSpikeBtn').addEventListener('click', () => {
             chaosSlider.value = 0.9;
-            chaosValue.textContent = '0.90';
-            updateDiagnostics();
-            showResult("💥 Chaos spike activated! Energy output surged to " + energyValue.textContent +
-                       ". Warning: Quantum coherence dropped!");
+            updateSliders();
+            showResult(`
+                💥 <strong>Chaos Spike Analysis (Educational Demo)</strong><br><br>
+                <strong>Chaos Parameter:</strong> 0.90 (High)<br>
+                <strong>Effect on Coherence:</strong> ${coherenceValue.textContent} (${parseFloat(coherenceValue.textContent) > 190 ? "Stable" : "Volatile"})<br>
+                <strong>Energy Output:</strong> ${energyValue.textContent} (${parseFloat(energyValue.textContent) > 1e19 ? "High" : "Moderate"})<br>
+                <strong>Cosmic Alignments:</strong> ${alignmentsValue.textContent}<br><br>
+                <strong>Educational Insight:</strong> High chaos increases energy but reduces stability.
+                In our real system, we'd use temporal security to balance this.
+            `);
         });
 
         document.getElementById('cultureBoostBtn').addEventListener('click', () => {
             cultureSlider.value = 1.5;
-            cultureValue.textContent = '1.50';
-            updateDiagnostics();
-            showResult("🌱 Cultural resonance boosted! Quantum coherence increased to " + coherenceValue.textContent +
-                       ". New cosmic alignment detected!");
+            updateSliders();
+            showResult(`
+                🌱 <strong>Cultural Resonance Analysis (Educational Demo)</strong><br><br>
+                <strong>Cultural Resonance:</strong> 1.50 (Elevated)<br>
+                <strong>Effect on Coherence:</strong> ${coherenceValue.textContent} (Enhanced by ${(parseFloat(coherenceValue.textContent)/180*100-100).toFixed(1)}%)<br>
+                <strong>Energy Output:</strong> ${energyValue.textContent}<br>
+                <strong>Cosmic Alignments:</strong> ${alignmentsValue.textContent}<br><br>
+                <strong>Educational Insight:</strong> Cultural resonance (Inuktitut syllabics) acts as a
+                "quantum stabilizer," improving coherence without additional energy cost.
+            `);
         });
 
         document.getElementById('temporalLockBtn').addEventListener('click', () => {
             temporalSlider.value = 2.0;
-            temporalValue.textContent = '2.00';
-            updateDiagnostics();
-            showResult("⏳ Temporal lock engaged! System stability maximized. Energy output: " + energyValue.textContent);
+            updateSliders();
+            showResult(`
+                ⏳ <strong>Temporal Security Analysis (Educational Demo)</strong><br><br>
+                <strong>Temporal Security:</strong> 2.00 (Max)<br>
+                <strong>Effect on Coherence:</strong> ${coherenceValue.textContent} (Stabilized)<br>
+                <strong>Energy Output:</strong> ${energyValue.textContent}<br>
+                <strong>Cosmic Alignments:</strong> ${alignmentsValue.textContent}<br><br>
+                <strong>Educational Insight:</strong> Temporal security "freezes" quantum states,
+                preventing decoherence. In our real system, this uses Arctic time algorithms.
+            `);
+        });
+
+        document.getElementById('checkChallenge').addEventListener('click', () => {
+            const coherence = parseFloat(coherenceValue.textContent);
+            const energy = parseFloat(energyValue.textContent.replace('e+', 'e')) * Math.pow(10, parseInt(energyValue.textContent.split('e+')[1] || 0));
+            if (coherence >= 200 && energy >= 1e20) {
+                showResult(`
+                    🎉 <strong>CHALLENGE COMPLETE!</strong><br><br>
+                    You achieved:<br>
+                    • Coherence: ${coherence.toFixed(2)} (Target: 200+)<br>
+                    • Energy: ${energyValue.textContent} (Target: 1e20+ J)<br><br>
+                    <strong>Reward:</strong> In our real system, this configuration would unlock
+                    <span class="text-nunavik-green">cosmic energy trading</span> capabilities.
+                    <a href="#contact" class="text-nunavik-green hover:underline">Contact us</a> to learn more.
+                `);
+            } else {
+                showResult(`
+                    ⚠️ <strong>CHALLENGE IN PROGRESS</strong><br><br>
+                    Current status:<br>
+                    • Coherence: ${coherence.toFixed(2)} (Need 200+)<br>
+                    • Energy: ${energyValue.textContent} (Need 1e20+ J)<br><br>
+                    <strong>Tip:</strong> Try increasing both chaos and cultural resonance while maintaining temporal security.
+                `);
+            }
         });
 
         function showResult(text) {
-            resultText.textContent = text;
+            resultText.innerHTML = text;
             experimentResult.classList.remove('hidden');
             setTimeout(() => {
                 experimentResult.classList.add('hidden');
-            }, 10000);
+            }, 12000);
         }
 
+        // Mode toggle
+        document.getElementById('sandboxModeBtn').addEventListener('click', () => {
+            document.getElementById('experimentButtons').classList.add('hidden');
+            document.getElementById('sandboxInstructions').classList.remove('hidden');
+            document.getElementById('sandboxModeBtn').classList.add('bg-demo-red/20');
+            document.getElementById('sandboxModeBtn').classList.remove('border-demo-red', 'text-demo-red');
+            document.getElementById('guidedModeBtn').classList.remove('bg-nunavik-green/20');
+        });
+
+        document.getElementById('guidedModeBtn').addEventListener('click', () => {
+            document.getElementById('experimentButtons').classList.remove('hidden');
+            document.getElementById('sandboxInstructions').classList.add('hidden');
+            document.getElementById('sandboxModeBtn').classList.remove('bg-demo-red/20');
+            document.getElementById('sandboxModeBtn').classList.add('border-demo-red', 'text-demo-red');
+            document.getElementById('guidedModeBtn').classList.add('bg-nunavik-green/20');
+        });
+
+        // Quiz functionality
+        document.getElementById('checkAnswer').addEventListener('click', () => {
+            const selected = document.querySelector('input[name="q1"]:checked');
+            const feedback = document.getElementById('quizFeedback');
+            feedback.classList.remove('hidden');
+
+            if (selected && selected.value === 'b') {
+                feedback.innerHTML = `
+                    <p class="text-nunavik-green font-bold">✅ Correct!</p>
+                    <p class="text-sm mt-1">
+                        High chaos increases energy output but reduces quantum coherence (stability).
+                        In our real system, we balance this with temporal security and cultural resonance.
+                        <a href="#playground" class="text-nunavik-green hover:underline">Try it in the playground →</a>
+                    </p>
+                `;
+            } else {
+                feedback.innerHTML = `
+                    <p class="text-demo-red font-bold">❌ Try again!</p>
+                    <p class="text-sm mt-1">
+                        Hint: Look at what happens to the energy output when you increase the chaos parameter
+                        in the <a href="#playground" class="text-nunavik-green hover:underline">playground</a>.
+                    </p>
+                `;
+            }
+        });
+
         // Initialize
-        updateDiagnostics();
+        updateSliders();
     </script>
 </body>
 </html>
-Updated contact form and payment info test 2
+
+
+Updated design concept page
